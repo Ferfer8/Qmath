@@ -1,13 +1,13 @@
 import tkinter as tk
 
 from theme import BG
-from screens import MenuScreen
+from screens import MenuScreen, OperationScreen
 
 
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.geometry("800x800")
+        self.geometry("700x700")
         self.title("Qmath")
         self.configure(background=BG)
 
@@ -23,6 +23,9 @@ class App(tk.Tk):
 
     def show_menu(self):
         self.switch_to(MenuScreen(self))
+ 
+    def show_operations(self, level):
+        self.switch_to(OperationScreen(self, level))
 
 
 
