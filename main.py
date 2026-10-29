@@ -1,7 +1,10 @@
+# This is the main file, it makes the window and switches between the screens.
+# Run this one to start the game.
+
 import tkinter as tk
 
 from theme import BG
-from screens import MenuScreen, OperationScreen
+from screens import MenuScreen, OperationScreen, EasyQuizScreen, HardQuizScreen
 
 
 class App(tk.Tk):
@@ -27,6 +30,10 @@ class App(tk.Tk):
     def show_operations(self, level):
         self.switch_to(OperationScreen(self, level))
 
+    def show_quiz(self, level, operation):
+        """Open the quiz page that matches the chosen level."""
+        screen_class = EasyQuizScreen if level == "easy" else HardQuizScreen
+        self.switch_to(screen_class(self, operation))
 
 
 if __name__ == "__main__":
